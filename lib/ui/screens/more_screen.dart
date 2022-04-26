@@ -17,7 +17,6 @@ class MoreScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: 'المزيد',
         actions: [
-          // SvgPicture.asset('assets/icons/Notification.svg'),
           CustomBadge(
             value: '2',
             right: 10,
@@ -30,15 +29,18 @@ class MoreScreen extends StatelessWidget {
           )
         ],
       ),
+      drawer: const Drawer(),
       body: ListView(
         children: [
           CustomListTile(
             title: 'بياناتي الشخصية',
             iconURL: 'assets/icons/Profile.svg',
             onPressed: () {
-              print('object');
               showModalBottomSheet(
                   isScrollControlled: true,
+                  isDismissible: true,
+                  enableDrag: true,
+                  
                   context: context,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(

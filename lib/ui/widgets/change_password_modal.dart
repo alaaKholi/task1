@@ -9,14 +9,13 @@ class ChangePassword extends StatelessWidget {
   const ChangePassword({
     Key? key,
   }) : super(key: key);
+  static final GlobalKey<FormState> _formGlobalKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final _formGlobalKey = GlobalKey<FormState>();
     final TextEditingController _passwordController = TextEditingController();
     final TextEditingController _confirmPasswordController =
         TextEditingController();
-
     return Container(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom + 35,
