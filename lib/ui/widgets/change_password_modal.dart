@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/ui/helpers/assets_helper.dart';
+import 'package:flutter_application_1/ui/helpers/colors_helper.dart';
+import 'package:flutter_application_1/ui/helpers/text_helper.dart';
+import 'package:flutter_application_1/ui/helpers/text_style_helper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants.dart';
@@ -18,12 +22,13 @@ class ChangePassword extends StatelessWidget {
         TextEditingController();
     return Container(
       padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom + 35,
-        top: 15.0,
-        right: 25.0,
-        left: 25.0,
+        bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+        top: 8.0,
+        right: 16.0,
+        left: 16.0,
       ),
       decoration: const BoxDecoration(
+        color: ColorsHelper.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20.0),
           topRight: Radius.circular(20.0),
@@ -31,105 +36,115 @@ class ChangePassword extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  icon: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffF7F7F8),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/icons/cancle.svg',
-                      color: const Color(0xff392C23),
-                      height: 20,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )),
             Align(
               alignment: Alignment.center,
-              child: Text(
-                'تغيير كلمة المرور',
-                style: TextStyle(fontSize: 20, color: secondaryColorBlack),
+              child: Container(
+                width: 32,
+                height: 3,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: ColorsHelper.border_color_EFEFF5,
+                ),
               ),
             ),
-            const SizedBox(height: 37.0),
-            Form(
-              key: _formGlobalKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    'كلمة المرور',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: secondaryColorBlack,
-                    ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                      icon: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: ColorsHelper.main_background_color_F7F7F8,
+                        ),
+                        child: SvgPicture.asset(
+                          AssetsHelper.ic_cancle,
+                          color: ColorsHelper.main_color_392C23,
+                          height: 20,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    )),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    TextHelper.change_password,
+                    style: heavyAvenirTextStyle(size: 20.0),
                   ),
-                  CustomTextFormField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'الرجاء إدخال كلمة المرور';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20.0),
-                  Text(
-                    'كلمة المرور الجديدة',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: secondaryColorBlack,
-                    ),
-                  ),
-                  CustomTextFormField(
-                    controller: _passwordController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'الرجاء إدخال كلمة المرور الجديدة';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20.0),
-                  Text(
-                    'تأكيد كلمة المرور الجديدة',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: secondaryColorBlack,
-                    ),
-                  ),
-                  CustomTextFormField(
-                    controller: _confirmPasswordController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'الرجاء إدخال تأكيد كلمة المرور الجديدة';
-                      }
-                      if (value != _passwordController.text) {
-                        return 'غير متطابقتين';
-                      }
+                ),
+                const SizedBox(height: 37.0),
+                Form(
+                  key: _formGlobalKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        TextHelper.password,
+                        style: mediumAvenirTextStyle(),
+                      ),
+                      const SizedBox(height: 8.0),
+                      CustomTextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return TextHelper.please_enter_password;
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                      Text(
+                        TextHelper.new_password,
+                        style: mediumAvenirTextStyle(),
+                      ),
+                      const SizedBox(height: 8.0),
+                      CustomTextFormField(
+                        controller: _passwordController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return TextHelper.please_enter_new_password;
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                      Text(
+                        TextHelper.confirm_new_password,
+                        style: mediumAvenirTextStyle(),
+                      ),
+                      const SizedBox(height: 8.0),
+                      CustomTextFormField(
+                        controller: _confirmPasswordController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return TextHelper.please_confirm_new_password;
+                          }
+                          if (value != _passwordController.text) {
+                            return TextHelper.un_matched;
+                          }
 
-                      return null;
-                    },
+                          return null;
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 32.0),
+                CustomElevatedButton(
+                  onNext: () {
+                    if (_formGlobalKey.currentState!.validate()) {}
+                  },
+                  text: TextHelper.save_changes,
+                )
+              ],
             ),
-            const SizedBox(height: 32.0),
-            CustomElevatedButton(
-                onNext: () {
-                  if (_formGlobalKey.currentState!.validate()) {}
-                },
-                text: 'حفظ التغييرات')
           ],
         ),
       ),

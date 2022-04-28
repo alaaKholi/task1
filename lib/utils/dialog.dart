@@ -1,52 +1,37 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/ui/helpers/colors_helper.dart';
+import 'package:flutter_application_1/ui/helpers/text_helper.dart';
+import 'package:flutter_application_1/ui/helpers/text_style_helper.dart';
 
-import '../ui/constants.dart';
+
 
 Future<void> showCustomDialog(BuildContext context) {
-  return showCupertinoDialog<void>(
+  return showDialog(
     context: context,
     barrierDismissible: true,
     builder: (BuildContext context) => CupertinoAlertDialog(
-      title: Text(
-        'تسجيل الخروج',
-        style: TextStyle(
-          fontSize: 20.0,
-          color: mainTextColor,
-          fontFamily: 'AvenirArabic',
-        ),
-      ),
-      content: Text(
-        'هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟',
-        style: TextStyle(
-          color: secondaryColorGray,
-          fontSize: 14.0,
-          fontFamily: 'AvenirArabic',
-        ),
-      ),
+      title: Container(
+          margin: const EdgeInsetsDirectional.only(bottom: 10.0, top: 12.0),
+          child: Text(TextHelper.log_out,
+              style: heavyAvenirTextStyle(size: 20))),
+      content: Text(TextHelper.r_u_sure_logout,
+          style: mediumAvenirTextStyle(
+              color: ColorsHelper.main_light_color_8A8A8F)),
       actions: <CupertinoDialogAction>[
         CupertinoDialogAction(
-          child: const Text(
-            'تسجيل الخروج',
-            style: TextStyle(
-              fontSize: 16.0,
-              color: Color(0xffff4040),
-              fontFamily: 'AvenirArabic',
-            ),
-          ),
+          child: Text(TextHelper.log_out,
+              style:
+                  mediumAvenirTextStyle(size: 16.0, color: ColorsHelper.red)),
           onPressed: () {
             //TODO:// sign out functionality
             Navigator.pop(context);
           },
         ),
         CupertinoDialogAction(
-          child: Text(
-            'الغاء',
-            style: TextStyle(
-              fontSize: 16.0,
-              color: secondaryColorGray,
-              fontFamily: 'AvenirArabic',
-            ),
-          ),
+          child: Text(TextHelper.cancle,
+              style: mediumAvenirTextStyle(
+                  size: 16.0, color: ColorsHelper.main_light_color_8A8A8F)),
           isDestructiveAction: true,
           onPressed: () {
             Navigator.pop(context);

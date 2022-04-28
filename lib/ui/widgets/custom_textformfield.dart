@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/ui/helpers/assets_helper.dart';
+import 'package:flutter_application_1/ui/helpers/colors_helper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -16,13 +18,14 @@ class CustomTextFormField extends StatelessWidget {
         obscureText: true,
         textAlign: TextAlign.right,
         decoration: InputDecoration(
+          iconColor: ColorsHelper.main_light_color_8A8A8F,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
           ),
           hintText: '**********',
           suffixIcon: SvgPicture.asset(
-            'assets/icons/Iconly-Light-Lock.svg',
-            color: const Color(0xff8A8A8F),
+            AssetsHelper.ic_lock,
+            color: ColorsHelper.main_light_color_8A8A8F,
             fit: BoxFit.scaleDown,
           ),
         ),

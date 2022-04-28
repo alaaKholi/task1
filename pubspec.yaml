@@ -75,14 +75,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: AvenirArabic
+    - family: AvenirArabicHeavy
       fonts:
-        - asset: assets/fonts/AvenirArabic-Black.otf
-        - asset: assets/fonts/AvenirArabic-Book.otf
         - asset: assets/fonts/AvenirArabic-Heavy.otf
-        - asset: assets/fonts/AvenirArabic-Light.otf
-        - asset: assets/fonts/AvenirArabic-Light1.otf
-        - asset: assets/fonts/AvenirArabic-Medium.otf
+          weight: 900
+    - family: AvenirArabicMedium
+      fonts:
+        - asset: assets/fonts/AvenirArabic-Medium.otf              
+          weight: 500
     
   #
   # For details regarding fonts from package dependencies,
