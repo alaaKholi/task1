@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
               ColorsHelper.secondary_color_392C23.value,
               ColorsHelper.secondary_color_swatches),
         ),
-        home: Directionality(
+        locale: const Locale('ar'),
+        home:  Directionality(
           textDirection: TextDirection.rtl,
           child: MoreScreen(),
         ));
